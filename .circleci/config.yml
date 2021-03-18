@@ -29,17 +29,17 @@ workflows:
 jobs:
   build:
     docker:
-      - image: 'cimg/base'
+      - image: 'cimg/python'
     steps:
       - run: echo 'Building now...'
   test:
     docker:
-      - image: 'cimg/base'
+      - image: 'cimg/python'
     steps:
       - run: echo 'Testing now...'
   release_feat:
     docker:
-      - image: 'cimg/base'
+      - image: 'cimg/python'
     steps:
       - checkout
       - run: echo 'Deploying (feat) now...'
@@ -51,7 +51,7 @@ jobs:
           to: 's3://demo.mayoct.net/${CIRCLE_USERNAME}'
   release_main:
     docker:
-      - image: 'cimg/base'
+      - image: 'cimg/python'
     steps:
       - checkout
       - run: echo 'Deploying (main) now...'
