@@ -34,7 +34,7 @@ jobs:
       - run: echo 'Building now...'
   test:
     docker:
-      - image: 'cimg/python'
+      - image: 'cimg/base:stable'
     steps:
       - run: echo 'Testing now...'
   release_feat:
