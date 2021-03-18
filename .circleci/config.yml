@@ -1,0 +1,25 @@
+version: 2.1
+
+orbs:
+  aws-s3: circleci/aws-s3@2.0.0
+  slack: circleci/slack@4.3.0
+
+workflows:
+  public-to-s3:
+    jobs:
+      - build
+          context: aws
+
+jobs:
+  build:
+    docker:
+      - image: 'cimg/python:3.6'
+    steps:
+      - checkout
+      - aws-s3/sync:
+          arguments: |
+            --acl public-read \
+            --cache-control "max-age=86400"
+          from: bucket
+          to: 's3://demo.mayoct.net'
+
