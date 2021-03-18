@@ -7,7 +7,7 @@ orbs:
 workflows:
   public-to-s3:
     jobs:
-      - build
+      - build:
           context: aws
 
 jobs:
